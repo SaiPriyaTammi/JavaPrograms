@@ -1,0 +1,38 @@
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.StringReader;
+
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonParser;
+import com.google.gson.stream.JsonReader;
+
+public class GsonExample {
+
+
+	public static void main(String[] args)  {
+		Gson gson = new Gson();
+
+		JsonArray jsonArray = new JsonArray();
+		JsonParser parser = new JsonParser();
+
+		Employees employeesList;
+
+		Object obj;
+		try {
+			obj = parser.parse(new FileReader("C:\\Users\\DELL\\Desktop\\Employees.txt"));
+			jsonArray = (JsonArray) obj;
+			String s= jsonArray.toString();
+			System.out.println(s);
+			JsonReader reader = new JsonReader(new StringReader(s));
+			employeesList= gson.fromJson(reader, Employees.class);
+			
+			System.out.println(employeesList);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+
+}

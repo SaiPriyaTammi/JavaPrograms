@@ -1,0 +1,37 @@
+package com.stream.example;
+
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+
+public class ReadJsonFile {
+
+	public static void main(String[] args) throws ParseException {
+
+		JSONParser parser = new JSONParser();
+
+		try
+		{
+			Object obj = parser.parse(new FileReader("employee.json"));
+			JSONObject jsonObj = (JSONObject) obj;
+			String id = (String) jsonObj.get("id");
+			System.out.println("Id:" +id);
+			String name = (String) jsonObj.get("name");
+			System.out.println("Name:" +name);
+			String age = (String) jsonObj.get("age");
+			System.out.println("Age:"+age);
+
+			//	JSONArray jsonArray = (JSONArray) jsonObj.get("employees");
+		}
+		catch(FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		catch(IOException e) { e.printStackTrace();}
+		catch(Exception e) { e.printStackTrace();}
+	}
+}

@@ -1,0 +1,26 @@
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
+public class Streams {
+
+	public static void main(String[] args) throws IOException {
+		List<String> bands2=Files.lines(Paths.get("C:\\Users\\DELL\\Desktop\\Employees.txt"))
+				.filter(x -> x.contains("sh"))
+				.collect(Collectors.toList());
+				bands2.forEach(x -> System.out.println(x));
+				// 10. stream rows from CSV file and count
+				Stream<String> row1 = Files.lines(Paths.get("C:\\Users\\DELL\\Desktop\\Employees.txt"));
+				int rowCount=(int)row1
+						.map(x ->x.split(","))
+						.filter(x -> x.length == 4)
+						.count();
+				System.out.println(rowCount + "rows.");
+				row1.close();
+
+	}
+
+}

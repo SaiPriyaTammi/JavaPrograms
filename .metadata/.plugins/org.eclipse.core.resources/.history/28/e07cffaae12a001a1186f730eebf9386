@@ -1,0 +1,30 @@
+package com.stream.example;
+
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.List;
+
+public class EmployeeExplorer {
+	
+	public static List<Employee> employees;
+	
+	private static String toJson(Employee employee) {
+		Gson gson = new Gson();
+		String employeeJson = gson.toJson(employee);
+		return employeeJson;
+	}
+	
+	private static void getEmployees() {
+		Gson gson = new Gson();
+		String filePath = "C:\\Users\\DELL\\Desktop\\Employee.txt";
+		try {
+			String filecontent = Files.readString(Paths.get(filePath));
+		}
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

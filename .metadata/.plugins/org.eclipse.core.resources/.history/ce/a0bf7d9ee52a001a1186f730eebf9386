@@ -1,0 +1,17 @@
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.List;
+import java.util.stream.Collectors;
+
+public class Streams {
+
+	public static void main(String[] args) throws IOException {
+		List<String> bands2=Files.lines(Paths.get("C:\\Users\\DELL\\Desktop\\Employees.txt"))
+				.filter(x -> x.contains("want"))
+				.collect(Collectors.toList());
+				bands2.forEach(x -> System.out.println(x));
+
+	}
+
+}

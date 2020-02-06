@@ -1,0 +1,48 @@
+package com.stream.example.controller;
+
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.google.gson.Gson;
+import com.stream.example.model.Employee;
+
+@RestController
+public class EmployeeController {
+	@GetMapping(value = "/getEmployees")
+	public void getJson() {
+		JSONParser json = new JSONParser();
+		JSONArray jsonArray = new JSONArray();
+		JSONObject jsonObject = new JSONObject();
+		
+		try {
+			Object obj = json.parse(new FileReader("C:\\Users\\DELL\\Desktop\\Employee.txt"));
+			jsonObject = (JSONObject) obj;
+			System.out.println(jsonObject);
+//			String employees = jsonArray.toJSONString();
+//			System.out.println(employees);
+//			Gson gson = new Gson();
+//			Employee employeeObj = new Employee();
+//			employeeObj = (Employee)gson.fromJson(employees, Employee.class);
+//			System.out.println(employeeObj);
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+
+}
